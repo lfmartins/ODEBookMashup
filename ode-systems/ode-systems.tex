@@ -1,0 +1,139 @@
+\documentclass[12pt,dvipsnames]{book}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage[left=2.5cm,right=2.5cm,bottom=2cm]{geometry}
+
+\usepackage[colorlinks=true,
+	linkcolor=blue, urlcolor=blue,
+	pdfauthor={L. Felipe Martins},
+	pdfsubject={Computational number theory},
+	pdfkeywords={number theory, computations, cryptography},
+	pdfstartview=FitH,
+	pdfview=FitH]{hyperref}
+
+%\usepackage{enumitem}
+%\setlist{nolistsep}
+
+%\usepackage{tikz}
+%\usetikzlibrary{arrows, positioning, calc}
+%\tikzstyle{vertex}=[draw, fill=green!15, circle, minimum size=20pt, inner sep=0pt]
+%
+%\newcommand{\ttnot}{\ensuremath{\mathtt{Not}}}
+%\newcommand{\ttand}{\ensuremath{\mathtt{And}}}
+%\newcommand{\ttor}{\ensuremath{\mathtt{Or}}}
+%\newcommand{\ttimp}{\ensuremath{\mathtt{Imp}}}
+%\newcommand{\tteqv}{\ensuremath{\mathtt{Eqv}}}
+%\newcommand{\opnot}{\ensuremath{\neg}}
+%\newcommand{\opand}{\ensuremath{\land}}
+%\newcommand{\opor}{\ensuremath{\lor}}
+%\newcommand{\opimp}{\ensuremath{\rightarrow}}
+%\newcommand{\opeqv}{\ensuremath{\leftrightarrow}}
+%\newcommand\Z{\ensuremath{\mathbb{Z}}}
+%\newcommand\N{\ensuremath{\mathbb{N}}}
+%\newcommand\R{\ensuremath{\mathbb{R}}}
+%\newcommand\Q{\ensuremath{\mathbb{Q}}}
+%\newcommand\C{\ensuremath{\mathbb{C}}}
+%\newcommand{\kw}[1]{$\mathtt{#1}$}
+%\newcommand{\interp}[1]{\ensuremath{{\cal #1}}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+\newtheorem{criterion}[theorem]{Criterion}
+\newtheorem{principle}[theorem]{Principle}
+\newtheorem{property}[theorem]{Property}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{exercise}{}[section]
+\newtheorem*{solution}{\emph{\textbf{Solution}}}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{claim}[theorem]{Claim}
+
+
+\begin{document}
+
+\lstset{
+	language=Python,
+	basicstyle=\small\ttfamily,
+	keywordstyle=\ttfamily\color{NavyBlue},
+	identifierstyle=\ttfamily\color{Black},
+	commentstyle=\ttfamily\color{Gray},
+	stringstyle=\ttfamily\color{Green},
+	showstringspaces=false,
+	numbers=left, numberstyle=\tiny, numbersep=5pt,
+%	moredelim=[s][\ttfamily\color{Black}]{ghci}{>},
+	moredelim=[is][\itshape\sffamily\color{OliveGreen}]{>>}{<<},
+%	moredelim=[is][\ttfamily\color{Black}]{||>}{<||}
+}
+
+\input{chapter01.tex}
+%\input{ch02.tex}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
