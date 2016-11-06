@@ -1,0 +1,273 @@
+%!TEX root = ode-systems.tex
+
+\chapter{The Theory of Linear Systems of ODEs}
+
+In this chapter, we turn to the solution of linear systems of differential equations. Linear systems appear in several applications, including electrical circuits, small mechanical vibrations and continuous time, discrete space Markov processes. The important class of constant coefficient systems results for the standard linearization of an nonlinear system near an equilibrium.
+
+%In this chapter, the reader will:
+
+%\begin{itemize}
+%\item Blah.
+%\end{itemize}
+
+\section{The Theory of Linear Systems}
+
+In this section we will consider the system of differential equations:
+\begin{align}
+\label{linear-system-tdep1}
+x'&=a(t)x+b(t)y+f(t)\\
+\label{linear-system-tdep2}
+y'&=c(t)x+d(t)y+g(t)
+\end{align}
+It is often convenient to write this system in vector form. To this end, define:
+\[
+\mathbf{x}(t)=\begin{bmatrix}x(t)\\y(t)\end{bmatrix};\quad
+A(t)=\begin{bmatrix}a(t)&b(t)\\c(t)&d(t)\end{bmatrix};\quad
+\mathbf{F}(t)=\begin{bmatrix}f(t)\\g(t)\end{bmatrix}
+\]
+We can then write the system~\eqref{linear-system-tdep1},~\eqref{linear-system-tdep2} as:
+\begin{equation}
+\label{linear-system-tdep-vector}
+\mathbf{x}'=A(t)\mathbf{x}+\mathbf{F}(t)
+\end{equation}
+We call $A(t)$ the \emph{coefficient matrix} of the system, and $\mathbf{F}(t)$ the \emph{forcing term}. If $\mathbf{F}(t)=0$ for all $t$, we say that the system is \emph{homogeneous}. Otherwise, it is \emph{non-homogeneous}.
+
+We remark that all the results in this chapter can be extended for the case where, in~\eqref{linear-system-tdep-vector} if $\mathbf{x}(t)$ and $\mathbf{F}(t)$, $n$-dimensional vectors, and $\mathbf{A}(t)$ is an $n\times n$ matrix.
+
+\begin{example}
+The equation of a forced linear oscillator is:
+\[
+mx''+cx'+kx=f(t),
+\]
+where $m>0$, $c\ge0$ and $k>0$, and $x(t)$ represents the displacement of the oscillating mass from the equilibrium position. If we let $y(t)=x'(t)$, this equation can be represented as the system:
+\begin{align*}
+x'&=y\\
+y'&=-\frac{k}{m}x-\frac{c}{m}y+f(t)
+\end{align*}
+It is, in general, using an analogous trick, to represent any linear differential equation of order $n$ into a $n$-dimensional system of linear differential equations.
+\end{example}
+
+The fundamental theoretical result about linear systems is the following:
+
+\begin{theorem}[\textbf{Existence and uniqueness of solutions}] 
+\label{theorem-exitence-uniqueness-linear-systems}
+Suppose that:
+\begin{enumerate}
+\item The functions $a(t)$, $b(t)$, $c(t)$, $d(t)$, $f(t)$ and $g(t)$ are continuous on the open interval $I\subset\R$.
+\item $t_0\in I$ and $x_0$, $y_0$ are real numbers.
+\end{enumerate}
+Then, there is a unique pair of functions $(x(t),y(t))$ defined for $t\in I$ such that~\eqref{linear-system-tdep1},~\eqref{linear-system-tdep2} are valid on $I$ and $x(t_0)=x_0$, $y(t_0)=y_0$.
+\end{theorem}
+
+In the next sections, we will prove a series of theorems that characterize the set of solutions of a linear system of differential equations. The next section starts this study for the case where the forcing term is zero.
+
+\section{Homogeneous Systems} In this section we consider the system of differential equations:
+\begin{align}
+\label{linear-system-homo-tdep1}
+x'&=a(t)x+b(t)y\\
+\label{linear-system-homo-tdep2}
+y'&=c(t)x+d(t)y
+\end{align}
+In vector notation:
+\begin{equation}
+\label{linear-system-homo-tdep-vector}
+\mathbf{x}'=A(t)\mathbf{x}
+\end{equation}
+where:
+\[
+\mathbf{x}(t)=\begin{bmatrix}x(t)\\y(t)\end{bmatrix};\quad
+A(t)=\begin{bmatrix}a(t)&b(t)\\c(t)&d(t)\end{bmatrix}.
+\]
+
+We start with the following important property of solutions of the system:
+
+\begin{theorem}[\textbf{Principle of superposition for homogeneous systems}]
+\label{theorem-superposition-homo-systems}
+Suppose that: 
+\begin{enumerate}
+\item $\mathbf{x}_1(t)$ and $\mathbf{x}_2(t)$ are solutions of the system~\eqref{linear-system-homo-tdep-vector} on an open interval $I$.
+\item $c_1$ and $c_2$ are arbitrary real numbers.
+\end{enumerate}
+Then, $\mathbf{x}(t)=c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)$ is also a solution of\eqref{linear-system-homo-tdep-vector} on $I$.
+\end{theorem}
+
+\begin{proof} Using~\eqref{linear-system-homo-tdep-vector}
+\begin{multline*}
+\mathbf{x}'(t)=\frac{d}{dt}\left[c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)\right]=
+c_1\mathbf{x}_1'(t)+c_2\mathbf{x}_2'(t)=\\
+c_1A(t)\mathbf{x}_1(t)+c_2A(t)\mathbf{x}_2(t)
+=A(t)\left[c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)\right]=A(t)\mathbf{x}(t).
+\end{multline*}
+\end{proof}
+
+One of the important consequences of this theorem is a result about the structure of the set of solutions of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2}. Theorem~\ref{theorem-superposition-homo-systems} states that this set of solutions is a \emph{vector space}. We will now show that this vector space has dimension 2. We start with a definition.
+
+\begin{definition} Suppose that:
+\[
+\mathbf{x}_1(t)=\begin{bmatrix}x_1(t)\\y_1(t)\end{bmatrix},\quad
+\mathbf{x}_2(t)=\begin{bmatrix}x_2(t)\\y_2(t)\end{bmatrix},
+\]
+are two vector functions defined for $t$ in the open interval $I\subset\R$. We say that $\mathbf{x}_1$ and $\mathbf{x}_2$ are \emph{linearly independent} over $I$ if and only if the following is true:
+\[
+c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)=\mathbf{0}\text{ for all $t\in I$}\quad\text{implies}\quad c_1=c_2=0.
+\]
+If $\mathbf{x}_1$ and $\mathbf{x}_2$ are not linearly independent, they are said to be \emph{linearly independent}.
+\end{definition}
+
+The qualification ``over $I$'' is often omitted f it is clear from the context what the interval $I$ is.
+
+\begin{example}
+The functions
+\[
+\mathbf{x}_1(t)=\begin{bmatrix}1\\t\end{bmatrix},\quad
+\mathbf{x}_2(t)=\begin{bmatrix}t\\t^2\end{bmatrix},
+\]
+are linearly independent over the interval $I=\R$. To see why, suppose that $c_1$ and $c_2$ are scalars such that $c_1\mathbf{x}_1+c_2\mathbf{x}_2=\mathbf{0}$ for all $t\in\R$, that is:
+\begin{equation} 
+\label{linear-indep-example1}
+\begin{bmatrix}c_1+c_2t\\c_1t+c_2t^2\end{bmatrix}=
+\begin{bmatrix}0\\0\end{bmatrix}\text{ for all $t\in\R$}.
+\end{equation}
+If we let $t=0$ this implies
+\[
+\begin{bmatrix}c_1\\0\end{bmatrix}=
+\begin{bmatrix}0\\0\end{bmatrix},
+\]
+so that $c_1=0$. Using this and plugging in $t=1$ in~\eqref{linear-indep-example1} we get:
+\[
+\begin{bmatrix}c_2\\c_2\end{bmatrix}=
+\begin{bmatrix}0\\0\end{bmatrix}.
+\]
+Thus,~\eqref{linear-indep-example1} for all $t$, which implies $c_1=c_2=0$. We conclude that $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent, as claimed.
+\end{example}
+
+The strategy used in the previous example (picking up values of $t$ and plugging them in) will, usually, be enough to show linear independence of arbitrary functions. If we know the functions are solutions of a system of linear differential equations, however, we can do much better. This is shown in the next theorem:
+
+\begin{theorem} 
+\label{theorem-linear-indep-solutions}
+Suppose that the assumptions of Theorem~\ref{theorem-exitence-uniqueness-linear-systems} are satisfied and:
+\[
+\mathbf{x}_1(t)=\begin{bmatrix}x_1(t)\\y_1(t)\end{bmatrix}\text{ and }
+\mathbf{x}_2(t)=\begin{bmatrix}x_2(t)\\y_2(t)\end{bmatrix}
+\]
+are solutions of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2} over the interval $I\subset\R$. Then, the following are equivalent:
+\begin{enumerate}
+\item $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent over $I$.
+\item The vectors $\mathbf{x}_1(t)$ and $\mathbf{x}_2(t)$ are linearly independent for all $t\in I$ (as vectors in $\R^2$).
+\item There is a $t_0\in I$ for which $\mathbf{x}_1(t_0)$ and $\mathbf{x}_2(t_0)$ are linearly independent. 
+\item For all $t\in I$,
+\[
+\det\begin{bmatrix}x_1(t)&x_2(t)\\y_1(t)&y_2(t)\end{bmatrix}=0.
+\]
+\item There is a $t_0\in I$ such that:
+\[
+\det\begin{bmatrix}x_1(t_0)&x_2(t_0)\\y_1(t_0)&y_2(t_0)\end{bmatrix}=0.
+\]
+\end{enumerate}
+\end{theorem}
+
+In the statement of the theorem, we used the notion of linear independence of vectors on the plane $\R^2$. We say that two vectors $\mathbf{v}_1$ and $\mathbf{v}_2$ are linearly independent if $c_1\mathbf{v}_1+c_2\mathbf{v}_2=\mathbf{0}$ implies $c_1=c_2=0$ for all scalars $c_1$ and $c_2$. On the plane, two vectors are linear independent if and only if they are not a scalar multiple of each other. In other words, the vectors must point to different directions.
+
+The theorem says that, for solutions of a system of linear differential equations, when checking linear independence we need only check it at a fixed value $t_0$. Let's now turn to the proof of the theorem.
+
+\begin{proof} To prove Theorem~\ref{theorem-linear-indep-solutions}, we start by showing that (1) implies (2). are equivalent. 
+
+Suppose that $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent over $I$, and let $t_0$ be an arbitrary point of $I$. We aim to show that the vectors $\mathbf{x}_1(t_0)$ and $\mathbf{x}_2(t_0)$ (in $\R^2$) are linearly independent.
+
+Suppose that $c_1$ and $c_2$ are scalars such that
+\[
+c_1\mathbf{x}_1(t_0)+c_2\mathbf{x}_2(t_0)=\mathbf{0}.
+\] 
+Let $\mathbf{y}(t)=c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)$. By the principle of superposition (Theorem~\ref{theorem-superposition-homo-systems}) is a solution of the system of linear equations~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2}, and $\mathbf{y}(t_0)=\mathbf{0}$. Then, the uniqueness part of Theorem~\ref{theorem-exitence-uniqueness-linear-systems} implies that $\mathbf{y}(t)=\mathbf{0}$ for all $t\in I$, that is:
+\[
+c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)=\mathbf{0}\text{ for all $t\in I$}.
+\]
+Since $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent this implies that $c_1=c_2=0$, and we conclude that $\mathbf{x}_1(t_0)$ and $\mathbf{x}_2(t_0)$ are linearly independent.
+
+The implications  $(2)\implies(3)$  and $(3)\implies(1)$ follow directly from the definition of linear independence.
+
+Thus, we have proved that (1), (2) and (3) are equivalent. The equivalence of (4) and (5), respectively, to (2) and (3) follows from the well-known characterization of linear independence in terms of determinants.
+\end{proof}
+
+We are now ready to prove the main result about the structure of the solution set of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2}.
+
+\begin{theorem} Suppose that the assumptions of Theorem~\ref{theorem-exitence-uniqueness-linear-systems} are satisfied. Then:
+\begin{enumerate}
+\item There are two solutions $\mathbf{x}_1$ and $\mathbf{x}_2$ of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2} that are linearly independent over $I$.
+\item If $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent solutions of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2}, then, for every other solution $\mathbf{x}$ of the system, there are scalars $c_1$ and $c_2$ such that $\mathbf{x}(t)=c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)$ for all $t\in I$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} To prove part (1), fix $t_0\in I$ and let $\mathbf{x}_1(t)$ and $\mathbf{x}_2(t)$ be solutions of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2} that satisfy:
+\[
+\mathbf{x}_1(t_0)=\begin{bmatrix}1\\0\end{bmatrix}\text{ and }
+\mathbf{x}_2(t_0)=\begin{bmatrix}0\\1\end{bmatrix}.
+\]
+These two solutions are guaranteed to exist by Theorem~\ref{theorem-exitence-uniqueness-linear-systems}. Since
+\[
+\det\begin{bmatrix}\mathbf{x}_1(t_0)&\mathbf{x}_1(t_0)\end{bmatrix}=\det\begin{bmatrix}1&0\\0&1\end{bmatrix}\ne 0,
+\]
+Theorem~\ref{theorem-linear-indep-solutions} implies that $\mathbf{x}_1$ and $\mathbf{x}_2$ are linearly independent.
+
+Let's now turn to the proof of part (2). Suppose that 
+\[
+\mathbf{x}_1(t)=\begin{bmatrix}x_1(t)\\y_1(t)\end{bmatrix}\text{ and }
+\mathbf{x}_2(t)=\begin{bmatrix}x_2(t)\\y_2(t)\end{bmatrix}
+\]
+are linearly independent solutions of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2} on the interval $I$. Let $\mathbf{x}(t)$ be any other solution. Fix $t_0\in I$. By part (4) of Theorem~\ref{theorem-linear-indep-solutions},
+\[
+\det\begin{bmatrix}x_1(t_0)&x_2(t_0)\\y_1(t_0)&y_2(t_0)\end{bmatrix}\ne0
+\]
+This implies that there is a unique pair $c_1$, $c_2$ such that:
+\[
+c_1\begin{bmatrix}x_1(t_0)\\y_1(t_0)\end{bmatrix}+
+c_2\begin{bmatrix}x_2(t_0)\\y_2(t_0)\end{bmatrix}=\mathbf{x}(t_0)
+\]
+Let $\mathbf{y}(t)=c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)$. Then $\mathbf{y}(t)$ is a solution of the system of differential equations such that $\mathbf{y}(t_0)=\mathbf{x}(t_0)$. The Uniqueness Theorem then implies that $\mathbf{y}(t)=\mathbf{x}(t)$ for all $t\in I$, that is, $\mathbf{x}(t)=c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t)$ for all $t\in I$.
+\end{proof}
+
+The Theorem above gives us our main method for finding the \emph{general solution} of the system~\eqref{linear-system-homo-tdep1},~\eqref{linear-system-homo-tdep2}. All we have to do is to find two linearly independent solutions $\mathbf{x}_1(t)$, $\mathbf{x}_2(t)$. The general solution is then given by:
+\[
+\mathbf{x}(t)=c_1\mathbf{x}_1(t)+c_2\mathbf{x}_2(t),
+\]
+where $c_1$ and $c_2$ are arbitrary scalars.
+
+This concludes our study of the homogeneous equation. We next turn to the nonhomogeneous equation.
+
+\section{Non-Homogeneous Linear Systems}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
